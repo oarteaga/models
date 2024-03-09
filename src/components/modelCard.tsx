@@ -74,7 +74,7 @@ const tabsX = [
     label: "Views",
     Component: (
       <div>
-        <h1>Vistas 1</h1>
+        <h1>Vistas</h1>
       </div>
     )
   }
