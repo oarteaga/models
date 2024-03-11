@@ -24,7 +24,7 @@ export default function ModelResume( {setActiveTab} ) {
         </Box>         
 
         <Box padding={1} display="flex" justifyContent="flex-end" alignItems={'flex-end'} >          
-          {/* Falta ver como pasar los parametros dentro del MAP*/}
+          {/* Falta ver como pasar los parametros dentro del MAP, se actuializo de nuevo*/}
           <Button onClick={handle_EditModelsFields} variant="contained">Edit Model fields</Button>
         </Box>
     </>
