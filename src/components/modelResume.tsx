@@ -23,9 +23,11 @@ export default function ModelResume( {setActiveTab} ) {
           <TextField id="modelDescription" label="Descripcion del Modelo" helperText="Use this to add a short description to tell people whats this model is for." variant="outlined" />
         </Box>         
 
-        <Box padding={1} display="flex" justifyContent="flex-end" alignItems={'flex-end'} >
+        <Box padding={1} display="flex" justifyContent="flex-end" alignItems={'flex-end'} >          
+          {/* Falta ver como pasar los parametros dentro del MAP*/}
           <Button onClick={handle_EditModelsFields} variant="contained">Edit Model fields</Button>
         </Box>
     </>
+
  );
 }
