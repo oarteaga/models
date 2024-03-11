@@ -5,6 +5,7 @@ import InputAdornments from './components/input1.tsx'
 import Input2 from './components/input2.tsx'
 import InputSearch from './components/inputSearch.tsx'
 import BasicTabs from './components/modelCard.tsx'
+import Model from './components/model.tsx'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
@@ -54,15 +55,19 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       {
-        <>
-          <InputAdornments></InputAdornments>
-          <Input2></Input2>
-          <InputSearch></InputSearch>
-          <CustomizedDialogs></CustomizedDialogs>
-          <BasicTabs center={true}></BasicTabs>
+        <>                    
+          {
+            <Model center={true}></Model>
+            /*
+            <InputAdornments></InputAdornments>
+            <Input2></Input2>
+            <InputSearch></InputSearch>
+            <CustomizedDialogs></CustomizedDialogs>
+            <BasicTabs center={true}></BasicTabs>
+            */
+          }
         </>
-      }
-      
+      }      
     </ThemeProvider>    
   )
 }

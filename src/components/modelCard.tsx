@@ -83,7 +83,6 @@ const tabsX = [
 //export default function BasicTabs( {tabs = tabsX, center : boolean}) {
 export default function BasicTabs( {tabs, center}) {
   const [value, setValue] = React.useState(0);
-debugger  
   tabs = (tabs === undefined ? tabsX : tabs)
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
