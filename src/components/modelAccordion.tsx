@@ -9,6 +9,8 @@ import Button from '@mui/material/Button';
 import Stack from "@mui/material/Stack";
 import Grid from '@mui/material/Grid';
 import BasicTabs from './modelCard.tsx'
+import GenericFieldProps from './genericFieldProps.tsx'
+
 
 interface eBavelField {  
 }
@@ -18,7 +20,7 @@ const aFieldsModel = [
 const tabsX = [
   {
     label: "Properties",
-    Component: <div>Lista de Propiedades de este campo</div>
+    Component: <GenericFieldProps></GenericFieldProps>
   },
   {
     label: "Advanced",
@@ -51,7 +53,7 @@ export default function ControlledAccordions() {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-            <BasicTabs tabs={tabsX}></BasicTabs>
+            <BasicTabs center={false} tabs={tabsX}></BasicTabs>
         </AccordionDetails>
       </Accordion>
 
@@ -62,7 +64,7 @@ export default function ControlledAccordions() {
           id="panel3bh-header"
         >
           <Typography sx={{ width: '75%', align:'left', flexShrink: 0 }}>
-            Nombre del Proyecto
+            Nombre del Proyecto 
           </Typography>
           <Typography sx={{ width: '25%', align:'right', color: 'text.secondary' }}>
             Multiple choice horizontal

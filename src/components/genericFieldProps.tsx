@@ -2,15 +2,9 @@ import React from "react";
 import { FormControl, Input, InputAdornment, InputLabel } from "@mui/material";
 import { Mail, PasswordOutlined, Search } from "@mui/icons-material";
 
-export default function Input2() {
+export default function GenericFieldProps() {
     return (
-        <div style={{
-            padding: 40,
-            width: '260px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 20
-         }}>
+        <>
             <FormControl variant="standard">
                <InputLabel htmlFor="label-prefix-adornment">
                   Enter your email
@@ -56,7 +50,7 @@ export default function Input2() {
                   }
                />
             </FormControl>
-         </div>
+        </>
     )
   }
   

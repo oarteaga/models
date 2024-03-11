@@ -32,7 +32,7 @@ export default function CustomizedDialogs() {
 
   return (
     <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button variant="contained" onClick={handleClickOpen}>
         Open dialog
       </Button>
       <BootstrapDialog
@@ -42,7 +42,7 @@ export default function CustomizedDialogs() {
         fullWidth={true}
         maxWidth={"lg"}          
       >
-        <DialogTitle sx={{ m: 0, p: 2, color:'black', fontWeight:600 }} id="customized-dialog-title">
+        <DialogTitle sx={{ m: 0, p: 2, color:'white', fontWeight:600 }} id="customized-dialog-title">
           Modelos
         </DialogTitle>
         <IconButton
@@ -52,7 +52,7 @@ export default function CustomizedDialogs() {
             position: 'absolute',
             right: 8,
             top: 8,
-            color: (theme) => theme.palette.grey[500],
+            color: (theme) => theme.palette.grey[900],
           }}
         >
           <CloseIcon />
@@ -62,7 +62,7 @@ export default function CustomizedDialogs() {
           <DataGridDemo></DataGridDemo>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose}>
+          <Button variant='contained' autoFocus onClick={handleClose}>
             Save changes
           </Button>
         </DialogActions>

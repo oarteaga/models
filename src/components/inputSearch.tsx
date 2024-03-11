@@ -1,6 +1,7 @@
 import React from "react";
 import { FormControl, Input, InputAdornment, InputLabel } from "@mui/material";
 import { Search } from "@mui/icons-material";
+import { color } from "@mui/system";
 
 export default function InputSearch() {
     return (
@@ -18,11 +19,11 @@ export default function InputSearch() {
                   Search
                </InputLabel>
             */           }    
-               <Input
+               <Input                  
                   id="prefix-adornment"
                   placeholder="Search"
                   endAdornment={
-                     <InputAdornment position="end">
+                     <InputAdornment variant="filled" sx={{color:'green'}} position="end">
                         <Search color="info" />
                      </InputAdornment>
                   }

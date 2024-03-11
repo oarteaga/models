@@ -54,12 +54,15 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       {
-        //<InputAdornments></InputAdornments>
-        //<Input2></Input2>
-        //<InputSearch></InputSearch>
-        //<CustomizedDialogs></CustomizedDialogs>
+        <>
+          <InputAdornments></InputAdornments>
+          <Input2></Input2>
+          <InputSearch></InputSearch>
+          <CustomizedDialogs></CustomizedDialogs>
+          <BasicTabs center={true}></BasicTabs>
+        </>
       }
-      <BasicTabs center={true}></BasicTabs>
+      
     </ThemeProvider>    
   )
 }
