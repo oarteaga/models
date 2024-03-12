@@ -33,7 +33,7 @@ export default function ControlledAccordions() {
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
   const collapseAll = () => {
-    setExpanded([]);
+    setExpanded(false);
   };
 
   const handleChange =
