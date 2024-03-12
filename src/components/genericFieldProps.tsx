@@ -8,6 +8,21 @@ import InputLabel from '@mui/material/InputLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
+import Grid from '@mui/material/Unstable_Grid2';
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
+
 
 const handleChange_FielType = () => {
   alert('Combo change')
@@ -15,28 +30,33 @@ const handleChange_FielType = () => {
 export default function GenericFieldProps() {
     return (
         <Box sx={{ width: '100%' }} >
-          <Stack spacing={4} direction="row" >
-            <TextField helperText="Label" id="txtLabel" label="Label" />
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel id="demo-simple-select-helper-label">Type</InputLabel>
+          <Grid container spacing={2}>
+            <Grid xs={6}>
+              <TextField sx={{width:'100%'}} helperText="Label" id="txtLabel" label="Label" />
+            </Grid>
+            <Grid xs={3}>
               <Select
-                labelId="demo-simple-select-helper-label"
-                id="demo-simple-select-helper"
-                value={30}
-                label="Type"
-                onChange={handleChange_FielType}
-              >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                  sx={{width:'100%'}}
+                  labelId="demo-simple-select-helper-label"
+                  id="demo-simple-select-helper"
+                  value={30}
+                  label="Type"
+                  onChange={handleChange_FielType}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={10}>Ten</MenuItem>
+                  <MenuItem value={20}>Twenty</MenuItem>
+                  <MenuItem value={30}>Thirty</MenuItem>
               </Select>
-              <FormHelperText>Type</FormHelperText>
-            </FormControl>            
-            <TextField helperText="Requiered" id="txtRequiered" label="Required"/>
-          </Stack>
+              <FormHelperText sx={{width:'100%'}}>Type</FormHelperText>
+            </Grid>
+            <Grid  display="flex" alignItems="center" justifyContent="right" sx={{mt:-3}} xs={3}>
+              <FormControlLabel control={<Switch defaultChecked />} label="Required" />
+            </Grid>
+          </Grid>
+
           <Stack spacing={2} sx={{border:0, marginTop:2}} direction="column" >
             <TextField helperText="Help text" id="txtHelp" label="Help text"/>
             <TextField helperText="Default value" id="txtDefault" label="Default value" />

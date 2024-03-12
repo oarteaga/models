@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import Stack from "@mui/material/Stack";
 import Grid from '@mui/material/Grid';
 import ModelFieldEdit from './modelFieldEdit.tsx'
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 
 interface eBavelField {  
@@ -20,6 +21,10 @@ const aFieldsModel = [
 export default function ModelFieldList() {
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
+  const handle_AddNewField = () => {
+    setExpanded(false)    
+  }
+
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
@@ -27,6 +32,10 @@ export default function ModelFieldList() {
 
   return (
     <div>
+      <Box paddingBottom={2} display="flex" justifyContent="flex-end" alignItems={'flex-end'} >          
+        <Button onClick={handle_AddNewField} variant="contained" startIcon={<AddCircleOutlineIcon/>}>Add new field</Button>
+      </Box>
+
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}

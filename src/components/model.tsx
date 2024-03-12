@@ -9,7 +9,11 @@ import Container from '@mui/material/Container';
 import ModelResume from './modelResume.tsx';
 import ModelFieldList from './modelFieldList.tsx'
 import ModelViewList from './modelViewList.tsx'
-
+import IconButton from '@mui/material/IconButton';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -38,6 +42,10 @@ function CustomTabPanel(props: TabPanelProps) {
 }
 
 export default function Model( {tabs, center}) {
+  const handle_AddNewField = () => {
+    alert('add new field')
+  }
+
   const setActiveTabX = (newValue: number) => {    
     setValue(newValue);
   };
@@ -50,7 +58,10 @@ export default function Model( {tabs, center}) {
     },
     {
       label: "Fields",
-      Component: <ModelFieldList></ModelFieldList>
+      Component: 
+        <>
+          <ModelFieldList></ModelFieldList>
+        </>
     },
     {
       label: "Views",
@@ -63,12 +74,12 @@ export default function Model( {tabs, center}) {
   tabs = (tabs === undefined ? tabsX : tabs)
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    console.log('Tab handleChange newVal='+newValue)
+    //console.log('Tab handleChange newVal='+newValue)
     setValue(newValue);
   };
 
   const setActiveTab = (newValue: number) => {
-    console.log('setActiveTab called newVal='+newValue)
+    //console.log('setActiveTab called newVal='+newValue)
     setValue(newValue);
   };
 
@@ -83,8 +94,8 @@ export default function Model( {tabs, center}) {
           </Tabs>
         </Box>
 
-        {tabs.map(( {Component} , i) => (
-          <CustomTabPanel value={value} index={i} key={i}>
+        {tabs.map(( {Component} , i) => (                    
+          <CustomTabPanel value={value} index={i} key={i}>           
             { Component }
           </CustomTabPanel>
         ))}      

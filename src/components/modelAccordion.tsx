@@ -32,6 +32,10 @@ const tabsX = [
 export default function ControlledAccordions() {
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
+  const collapseAll = () => {
+    setExpanded([]);
+  };
+
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
