@@ -3,7 +3,7 @@ interface eBavelField {
   description : string;
 }
 
-const aFieldsModel: eBavelField[] = [
+const eBavelFieldsTypes: eBavelField[] = [
   {type:'action', description:'Action'},
   {type:'alphanumeric', description:'Alphanumeric'},
   {type:'audio', description:'Audio'},
@@ -36,3 +36,5 @@ const aFieldsModel: eBavelField[] = [
   {type:'url', description:'Url'},
   {type:'video', description:'Video'},
 ]
+
+export default eBavelFieldsTypes

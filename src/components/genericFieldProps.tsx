@@ -14,6 +14,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import Grid from '@mui/material/Unstable_Grid2';
+import eBavelFieldsTypes from './ebavelDefinitions.ts'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -33,10 +34,10 @@ export default function GenericFieldProps() {
     return (
         <Box sx={{ width: '100%' }} >
           <Grid container spacing={2}>
-            <Grid xs={6}>
+            <Grid xs={5}>
               <TextField sx={{width:'100%'}} helperText="Label" id="txtLabel" label="Label" />
             </Grid>
-            <Grid xs={3}>
+            <Grid xs={4}>
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">Type</InputLabel>
                 <Select
@@ -46,9 +47,11 @@ export default function GenericFieldProps() {
                   label="Type"
                   onChange={handleChange_FielType}
                 >
-                  <MenuItem value={'10'}>Ten</MenuItem>
-                  <MenuItem value={'20'}>Twenty</MenuItem>
-                  <MenuItem value={'30'}>Thirty</MenuItem>
+                  {
+                    eBavelFieldsTypes.map( function(field) {
+                      return(<MenuItem value={field.type}>{field.description}</MenuItem>)
+                    })
+                  }
                 </Select>
               </FormControl>              
             </Grid>
