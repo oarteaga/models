@@ -23,11 +23,13 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-
-const handleChange_FielType = () => {
-  alert('Combo change')
-}
 export default function GenericFieldProps() {
+    const [fieldType, setFieldType] = React.useState('');
+
+    const handleChange_FielType = (event: SelectChangeEvent) => {
+      setFieldType(event.target.value as string);
+    };
+      
     return (
         <Box sx={{ width: '100%' }} >
           <Grid container spacing={2}>
@@ -35,22 +37,20 @@ export default function GenericFieldProps() {
               <TextField sx={{width:'100%'}} helperText="Label" id="txtLabel" label="Label" />
             </Grid>
             <Grid xs={3}>
-              <Select
-                  sx={{width:'100%'}}
-                  labelId="demo-simple-select-helper-label"
-                  id="demo-simple-select-helper"
-                  value={30}
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Type</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={fieldType}
                   label="Type"
                   onChange={handleChange_FielType}
                 >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
-              </Select>
-              <FormHelperText sx={{width:'100%'}}>Type</FormHelperText>
+                  <MenuItem value={'10'}>Ten</MenuItem>
+                  <MenuItem value={'20'}>Twenty</MenuItem>
+                  <MenuItem value={'30'}>Thirty</MenuItem>
+                </Select>
+              </FormControl>              
             </Grid>
             <Grid  display="flex" alignItems="center" justifyContent="right" sx={{mt:-3}} xs={3}>
               <FormControlLabel control={<Switch defaultChecked />} label="Required" />

@@ -28,7 +28,7 @@ function CustomTabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <Typography component={'span'}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -95,11 +95,6 @@ export default function BasicTabs( {tabs, center}) {
       <Box sx={{ width: '100%', boxShadow: 3, borderRadius: 4, border:'3px solid gray' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} centered={center} onChange={handleChange} aria-label="basic tabs example">
-            {/*
-            <Tab sx={{textTransform :"none"}} label="Resume" {...a11yProps(0)} />
-            <Tab sx={{textTransform :"none"}} label="Fields" {...a11yProps(1)} />
-            <Tab sx={{textTransform :"none"}} label="Views" {...a11yProps(2)}  />
-            */}
             {tabs.map(({ label }, i) => (
               <Tab sx={{textTransform :"none", fontWeight:800}} label={label} key={i} />
             ))}          
@@ -110,27 +105,6 @@ export default function BasicTabs( {tabs, center}) {
             {Component}
           </CustomTabPanel>
         ))}      
-        {/*
-        <CustomTabPanel value={value} index={0}>
-          <Box  component="form" sx={ {display: 'flex-row', alignItems: 'flex-end', '& > :not(style)': { m: 1, width: '55ch' }}} 
-            noValidate
-            autoComplete="off"
-          >
-            <TextField id="modelName" label="Nombre del Modelo" variant="standard" />
-            <TextField id="modelDescription" label="Descripcion del Modelo" variant="standard" />
-          </Box>                
-        </CustomTabPanel>
-        <CustomTabPanel value={value} index={1}>
-          <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-            <TextField id="input-with-sx" label="With sx" variant="standard" />
-          </Box>                       
-        </CustomTabPanel>
-        <CustomTabPanel value={value} index={2}>
-          <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-            <TextField id="standard-basic" label="Descripcion del Modelo" variant="standard" />
-          </Box>                
-        </CustomTabPanel>
-        */}
       </Box>
     </Container>
   );

@@ -11,12 +11,6 @@ import Grid from '@mui/material/Grid';
 import BasicTabs from './modelCard.tsx'
 import GenericFieldProps from './genericFieldProps.tsx'
 
-
-interface eBavelField {  
-}
-const aFieldsModel = [
-]
-
 const tabsX = [
   {
     label: "Properties",
@@ -28,9 +22,7 @@ const tabsX = [
   },
 ];
 
-
 export default function ModelFieldEdit() {
-
   return (
       <BasicTabs center={false} tabs={tabsX}></BasicTabs>
   );
