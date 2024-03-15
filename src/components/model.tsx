@@ -3,17 +3,19 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
+//import TextField from '@mui/material/TextField';
+//import Button from '@mui/material/Button';
+//import IconButton from '@mui/material/IconButton';
+//import OutlinedInput from '@mui/material/OutlinedInput';
+//import InputLabel from '@mui/material/InputLabel';
+//import InputAdornment from '@mui/material/InputAdornment';
+//import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+
 import ModelResume from './modelResume.tsx';
 import ModelFieldList from './modelFieldList.tsx'
 import ModelViewList from './modelViewList.tsx'
-import IconButton from '@mui/material/IconButton';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { ModelList } from './modelList.tsx';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -41,65 +43,86 @@ function CustomTabPanel(props: TabPanelProps) {
   );
 }
 
-export default function Model( {tabs, center}) {
+function ModelResumeFieldsViews( {setShowModelListView, tabs, center} ) {
   const handle_AddNewField = () => {
     alert('add new field')
   }
-
   const setActiveTabX = (newValue: number) => {    
-    setValue(newValue);
+    setActiveTab(newValue);
   };
 
   const tabsX = [
     {
       label: "Resume",
-      Component: <ModelResume setActiveTab={setActiveTabX}></ModelResume>
-      //Component: <ModelResume setActiveTab={{}}></ModelResume>
+      Component: <ModelResume setShowModelListView={setShowModelListView} setActiveTab={setActiveTabX}></ModelResume>
     },
     {
       label: "Fields",
-      Component: 
-        <>
-          <ModelFieldList></ModelFieldList>
-        </>
+      Component: <ModelFieldList></ModelFieldList>
     },
     {
       label: "Views",
       Component: <ModelViewList></ModelViewList>    
     }
   ];  
-  
-  const [value, setValue] = React.useState(0);
-
-  tabs = (tabs === undefined ? tabsX : tabs)
-
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    //console.log('Tab handleChange newVal='+newValue)
-    setValue(newValue);
+  //mantener la Tab activa
+  const [activeTab, setActiveTab] = React.useState(0);
+  //Tabs definition
+  tabs = (tabs === undefined || tabs === null ? tabsX : tabs)
+  //Controlar el cambio de Tabs del componente
+  const handleChangeTabs = (event: React.SyntheticEvent, newActiveTab: number) => {
+    setActiveTab(newActiveTab);
   };
-
-  const setActiveTab = (newValue: number) => {
-    //console.log('setActiveTab called newVal='+newValue)
-    setValue(newValue);
-  };
+  //Func para activar un tab desde un child
+  //const activeThisTab = (newActiveTab: number) => {
+  //  setActiveTab(newActiveTab);
+  //};
 
   return (
     <Container maxWidth="md"  sx={{ p:2 }}>
       <Box sx={{ width: '100%', boxShadow: 3, borderRadius: 4, border:'3px solid gray' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={value} centered={center} onChange={handleChange} aria-label="basic tabs example">
+          <Tabs value={activeTab} centered={center} onChange={handleChangeTabs} aria-label="basic tabs example">
             {tabs.map(({ label }, i) => (
-              <Tab sx={{textTransform :"none", fontWeight:800}} label={label} key={i} />
+              <Tab sx={{textTransform:"none", fontWeight:800}} label={label} key={i} />
             ))}          
           </Tabs>
         </Box>
-
+        {/* Generar los Tabs con sus respectivos componentes dentro de ellas */ }
         {tabs.map(( {Component} , i) => (                    
-          <CustomTabPanel value={value} index={i} key={i}>           
+          <CustomTabPanel value={activeTab} index={i} key={i}>           
             { Component }
           </CustomTabPanel>
         ))}      
       </Box>
     </Container>
   );
+}
+
+export function Models()
+{
+  const [showModelListView, setShowModelListView] = React.useState(true);
+  const setModelListViewFunc = (newValue: boolean) => {    
+    console.log('Models setShowModelListView', newValue)
+    setShowModelListView(newValue);
+  };
+
+  if(showModelListView)
+  {
+    console.log('showModelListView==TRUE por lo cual se pinta resumen de modelos')
+    return (
+      <Container maxWidth="md"  sx={{ p:2, marginTop:10 }}>
+        <ModelList setShowModelListView={setShowModelListView} ></ModelList>
+      </Container>
+    )
+  }
+  else
+  {
+    console.log('showModelListView==FALSE por lo cual se pinta EDICION FIELDS')
+    return (
+      <Container maxWidth="md"  sx={{ p:2, marginTop:10 }}>
+        <ModelResumeFieldsViews setShowModelListView={setShowModelListView} tabs={null} center={true}></ModelResumeFieldsViews>
+      </Container>
+    )
+  }
 }

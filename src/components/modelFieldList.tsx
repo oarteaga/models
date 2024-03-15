@@ -40,8 +40,8 @@ export default function ModelFieldList() {
     return (
       <>
         <Box paddingBottom={2} sx={{ gap: 1 }} display="flex" justifyContent="flex-end" alignItems={'flex-end'} >          
-          <Button onClick={handle_SaveNewField} sx={{ marginRight: 0 }} variant="contained" startIcon={<AddCircleOutlineIcon/>}>Save</Button>
-          <Button onClick={handle_SaveNewField} sx={{ marginRight: 3 }} variant="contained" startIcon={<AddCircleOutlineIcon/>}>Cancel</Button>
+          <Button onClick={handle_SaveNewField} sx={{ marginRight: 0 }} variant="contained" >Save</Button>
+          <Button onClick={handle_SaveNewField} sx={{ marginRight: 3 }} variant="contained" >Cancel</Button>
         </Box>      
         <Container maxWidth="md"  sx={{ p:1 }}>
           <Box sx={{ width: '100%', boxShadow: 3, borderRadius: 4, border:'3px solid gray' }}>
@@ -67,10 +67,10 @@ export default function ModelFieldList() {
             aria-controls="panel1bh-content"
             id="panel1bh-header"
           >
-            <Typography sx={{ width: '75%', align:'left', flexShrink: 0 }}>
+            <Typography sx={{ width: '70%', align:'left', flexShrink: 0 }}>
               Fecha de Inicio del Proyecto
             </Typography>
-            <Typography sx={{ width: '25%', align:'right', color: 'text.secondary' }}>
+            <Typography sx={{ width: '30%', align:'right', color: 'text.secondary' }}>
               Date
             </Typography>
           </AccordionSummary>
@@ -85,10 +85,10 @@ export default function ModelFieldList() {
             aria-controls="panel3bh-content"
             id="panel3bh-header"
           >
-            <Typography sx={{ width: '75%', align:'left', flexShrink: 0 }}>
+            <Typography sx={{ width: '70%', align:'left', flexShrink: 0 }}>
               Nombre del Proyecto 
             </Typography>
-            <Typography sx={{ width: '25%', align:'right', color: 'text.secondary' }}>
+            <Typography sx={{ width: '30%', align:'right', color: 'text.secondary' }}>
               Multiple choice horizontal
             </Typography>
           </AccordionSummary>
@@ -104,10 +104,10 @@ export default function ModelFieldList() {
             aria-controls="panel3bh-content"
             id="panel3bh-header"
           >
-            <Typography sx={{ width: '75%', align:'left', flexShrink: 0 }}>
+            <Typography sx={{ width: '70%', align:'left', flexShrink: 0 }}>
               Nombre del Proyecto 
             </Typography>
-            <Typography sx={{ width: '25%', align:'right', color: 'text.secondary' }}>
+            <Typography sx={{ width: '30%', align:'right', color: 'text.secondary' }}>
               Multiple choice horizontal
             </Typography>
           </AccordionSummary>
@@ -124,10 +124,10 @@ export default function ModelFieldList() {
             aria-controls="panel3bh-content"
             id="panel3bh-header"
           >
-            <Typography sx={{ width: '75%', align:'left', flexShrink: 0 }}>
+            <Typography sx={{ width: '70%', align:'left', flexShrink: 0 }}>
               Nombre del Proyecto 
             </Typography>
-            <Typography sx={{ width: '25%', align:'right', color: 'text.secondary' }}>
+            <Typography sx={{ width: '30%', align:'right', color: 'text.secondary' }}>
               Multiple choice horizontal
             </Typography>
           </AccordionSummary>

@@ -1,9 +1,9 @@
-interface eBavelField {  
+export interface eBavelField {  
   type : string;
   description : string;
 }
 
-const eBavelFieldsTypes: eBavelField[] = [
+export const eBavelFieldsTypes:eBavelField[] = [
   {type:'action', description:'Action'},
   {type:'alphanumeric', description:'Alphanumeric'},
   {type:'audio', description:'Audio'},
@@ -37,4 +37,36 @@ const eBavelFieldsTypes: eBavelField[] = [
   {type:'video', description:'Video'},
 ]
 
-export default eBavelFieldsTypes
+export const eBavelFieldsTypes_:Record<string, string> = {
+  'action' : 'Action',
+  'alphanumeric' : 'Alphanumeric',
+  'audio' : 'Audio',
+  'calculatedField' : 'Calculated Field',
+  'chart' : 'Chart',
+  'date' : 'Date',
+  'datetime' : 'Datetime',
+  'detailView' : 'Detail View',
+  'document' : 'Document',
+  'email' : 'Email',
+  'geolocation' : 'Geolocation',
+  'html' : 'Html',
+  'integer' : 'Integer',
+  'password' : 'Password',
+  'phone' : 'Phone',
+  'photo' : 'Photo',
+  'quickResponse' : 'Quick Response',
+  'rating' : 'Rating',
+  'report' : 'Report',
+  'richText' : 'Rich Text',
+  'sectionHeaderTitle' : 'Section Header Title',
+  'signature' : 'Signature',
+  'singleChoiceHorizontal' : 'Single Choice Horizontal',
+  'singleChoiceList' : 'Single Choice List',
+  'singleChoiceVertical' : 'Single Choice Vertical',
+  'text' : 'Text',
+  'time' : 'Time',
+  'toggleSwitch' : 'Toggle Switch',
+  'uniqueID' : 'UniqueID',
+  'url' : 'Url',
+  'video' : 'Video'
+}

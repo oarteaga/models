@@ -3,14 +3,31 @@ import { useMemo, useState, useEffect } from 'react';
 //import { useDemoData } from '@mui/x-data-grid-generator';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { styled } from '@mui/material/styles';
+import {
+  DataGrid, 
+  GridColDef, 
+  GridToolbarContainer,
+  GridToolbarQuickFilter} from '@mui/x-data-grid';
+
+   import Paper from '@mui/material/Paper';
+  import Grid from '@mui/material/Grid';
+  
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  }));  
 //import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 const columns: GridColDef[] = [
   { 
     field: 'model',
     headerName: 'Nombre',
-    width: 300,
+    width: 270,
     editable: false,
     headerAlign: 'center',
     headerClassName: 'super-app-theme--header',
@@ -18,7 +35,7 @@ const columns: GridColDef[] = [
   {
     field: 'description',
     headerName: 'Description',
-    width: 600,
+    width: 390,
     editable: false,
     headerAlign: 'center',
     headerClassName: 'super-app-theme--header',
@@ -27,7 +44,7 @@ const columns: GridColDef[] = [
     field: 'type',
     headerName: 'Type',
     type: 'string',
-    width: 110,
+    width: 85,
     editable: false,
     headerAlign: 'center',
     headerClassName: 'super-app-theme--header',
@@ -53,9 +70,28 @@ const filterModel: GridFilterModel = {
   logicOperator: GridLogicOperator.Or,
 };
 */
+function CustomToolbar( {setShowModelListView} ) {
+  function handle_ButtonToolbar()
+  {
+    //setShowModelListView(true)
+    console.log('CustomToolbar btn click');
+   }
+  
+  return (
+    <GridToolbarContainer sx={{marginBottom:1}}>
+      <Grid container spacing={2}>
+        <Grid item xs={9}>
+          <GridToolbarQuickFilter/>
+        </Grid>
+        <Grid item xs={3}>
+          <Button onClick={handle_ButtonToolbar} variant="contained" startIcon={<AddCircleOutlineIcon/>}>New model</Button>
+        </Grid>
+      </Grid>
+    </GridToolbarContainer>
+  );
+}
 
-
-export default function DataGridDemo() {
+export default function DataGridDemo( {setShowModelListView} ) {
   //const [filter, setFilter] = useState('');
   const [filter, setFilter] = useState([]);
   /*
@@ -66,10 +102,18 @@ export default function DataGridDemo() {
   });
   */
   const { data } = {}
+  const handleOnRowDoubleClick = (
+    params, // GridRowParams
+    event, // MuiEvent<React.MouseEvent<HTMLElement>>
+    details, // GridCallbackDetails
+  ) => {
+    setShowModelListView(false)    
+  };  
+  
 
   //console.log('filter:'+filter)
   return (
-    <Box sx={{ height: 500, width: '100%' }}>
+    <Box sx={{ marginTop:2, height: 500, width: '100%' }}>
       <DataGrid
         /*
         filterModel={{
@@ -78,6 +122,7 @@ export default function DataGridDemo() {
         }}        //onFilterModelChange={setFilter('B')}        
         //onFilterModelChange={(newFilterModel) => setFilter(newFilterModel)}
         */
+        onRowDoubleClick={handleOnRowDoubleClick}
         rows={rows}
         columns={columns}
         sx={{
@@ -110,14 +155,19 @@ export default function DataGridDemo() {
         disableColumnSelector
         disableColumnExport
         disableDensitySelector        
-        slots={{ toolbar: GridToolbar }}
+        slots={{ toolbar: CustomToolbar }}        
         slotProps={{
           toolbar: {
-            printOptions: { disableToolbarButton: true },
-            csvOptions: { disableToolbarButton: true },            
-            showQuickFilter: true,
-          },       
+            quickFilterProps: {
+              variant: "outlined",
+              size: "small"
+            }            
+            //printOptions: { disableToolbarButton: true },
+            //csvOptions: { disableToolbarButton: true },            
+            //showQuickFilter: true,
+          },                 
         }} 
+        
       />
     </Box>
   );
